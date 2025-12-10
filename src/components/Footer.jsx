@@ -1,24 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, ArrowUp } from 'lucide-react'
+import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react'
 
 const Footer = () => {
 
   return (
     <>
-      {/* Arrow Divider */}
-      <div className="relative -mb-1">
-        <svg
-          className="w-full h-16 md:h-20 fill-current text-white"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" />
-        </svg>
-        <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50"></div>
-      </div>
-
-      {/* Modern Footer */}
       <footer className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(124,58,237,0.15),transparent_50%)]"></div>

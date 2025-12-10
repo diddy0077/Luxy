@@ -37,7 +37,7 @@ import {
   Lock,
   Split,
 } from "lucide-react";
-import Footer from "../components/Footer";
+
 
 const HomePage = () => {
   const [formData, setFormData] = useState({
@@ -79,7 +79,6 @@ const HomePage = () => {
   const featureRef = useRef(null);
   const waitlistRef = useRef(null);
   const pricingRef = useRef(null);
-  const dashboardRef = useRef(null);
   const howItWorksRef = useRef(null);
 
   const handleInputChange = (e) => {
@@ -104,13 +103,13 @@ const HomePage = () => {
         featureRef={featureRef}
         waitlistRef={waitlistRef}
         pricingRef={pricingRef}
-        dashboardRef={dashboardRef}
         howItWorksRef={howItWorksRef}
+        isJoin={false}
       />
-      <Hero />
+      <Hero waitlistRef={waitlistRef} />
 
       {/* Dashboard Preview Section */}
-      <section className="py-16 bg-gray-50" ref={dashboardRef}>
+      {/* <section className="py-16 bg-gray-50" ref={dashboardRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -154,7 +153,7 @@ const HomePage = () => {
             <Dashboard />
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <div ref={pricingRef}>
         <Pricing />
@@ -689,7 +688,7 @@ const HomePage = () => {
       </section>
 
       {/* Enhanced Footer */}
-      <Footer />
+      
     </div>
   );
 };

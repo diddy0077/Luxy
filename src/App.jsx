@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import { ToastProvider } from "./components/CustomToast";
 import ScrollToTop from "./components/ScrollToTop";
+import JoinWaitlist from "./pages/JoinWaitlist";
+import { Routes, Route } from "react-router-dom"
+import Footer from "./components/Footer";
 
 const App = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -11,10 +14,8 @@ const App = () => {
       setShowScrollTop(window.scrollY > 300);
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -23,8 +24,12 @@ const App = () => {
   return (
     <ToastProvider>
       <div className="relative">
-        <HomePage />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/join-waitlist' element={<JoinWaitlist />} />
+        </Routes>
         {showScrollTop && <ScrollToTop />}
+        <Footer />
       </div>
     </ToastProvider>
   );

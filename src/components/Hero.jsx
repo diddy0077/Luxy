@@ -2,13 +2,17 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Award,Sparkles,ArrowRight,DollarSign ,Shield,Target } from 'lucide-react'
 
-const Hero = () => {
+const Hero = ({waitlistRef}) => {
+ 
+  const handleScroll = () => {
+    waitlistRef?.current.scrollIntoView({behavior: 'smooth'})
+  }
+
+
   return (
-     <section className="relative min-h-screen py-20 flex items-center justify-center overflow-hidden">
+     <section className="relative min-h-screen py-20 pt-40 flex items-center justify-center overflow-hidden">
            
-            <div className="absolute inset-0 bg-gradient-to-br from-[#8517B2] via-purple-800 to-indigo-900"></div>
-    
-           
+            <div className="absolute inset-0 bg-gradient-to-br from-[#8517B2] via-purple-800 to-indigo-900"></div> 
             <div className="absolute inset-0">
               <motion.div
                 initial={{ scale: 1.1, opacity: 0 }}
@@ -136,8 +140,8 @@ const Hero = () => {
                     className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-8 border border-white/20 shadow-lg"
                   >
                     <Award className="text-yellow-300" size={18} />
-                    <span className="text-white font-semibold">
-                      AI-Powered Platform
+                    <span className="text-white font-semibold text-xs sm:text-sm">
+                      Early Bird Offer — Limited Time Only
                     </span>
                     <Sparkles className="text-yellow-300" size={16} />
                   </motion.div>
@@ -176,7 +180,7 @@ const Hero = () => {
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
-                    className="text-lg md:text-xl text-purple-100 mb-8 leading-relaxed font-medium"
+                    className="text-md md:text-lg text-purple-100 mb-8 leading-relaxed font-medium"
                   >
                     Turn your vehicle into a profit-generating asset with our{" "}
                     <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent font-semibold">
@@ -191,7 +195,8 @@ const Hero = () => {
                     transition={{ delay: 1.4, duration: 0.8 }}
                     className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4"
                   >
-                    <motion.button
+              <motion.button
+                onClick={handleScroll}
                       whileHover={{
                         scale: 1.05,
                         y: -5,
@@ -199,7 +204,8 @@ const Hero = () => {
                       }}
                       whileTap={{ scale: 0.95 }}
                       className="relative bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 text-white px-6 py-3 rounded-full text-lg font-bold shadow-2xl hover:shadow-yellow-500/30 transition-all overflow-hidden group"
-                    >
+              >
+                
                       <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-yellow-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <span className="relative z-10 flex items-center">
                         Join the Waitlist
