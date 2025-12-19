@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Pricing from "../components/Pricing";
@@ -38,7 +38,6 @@ import {
   Split,
 } from "lucide-react";
 
-
 const HomePage = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -71,6 +70,9 @@ const HomePage = () => {
     "Lincoln",
     "Other",
   ];
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const currentYear = new Date().getFullYear();
   const carYears = Array.from({ length: 20 }, (_, i) => currentYear - i);
@@ -160,32 +162,18 @@ const HomePage = () => {
       </div>
 
       <About aboutRef={aboutRef} />
-      {/* Features Section */}
+      {/* Optimized Features Section */}
       <section ref={featureRef} className="py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#8517B2] via-purple-800 to-indigo-900"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_80%,rgba(251,191,36,0.1),transparent_50%)]"></div>
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_20%,rgba(236,72,153,0.1),transparent_50%)]"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/20"
-            >
+          <div className="text-center mb-12 opacity-0 animate-fade-in-up">
+            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/20">
               <Sparkles className="text-yellow-300" size={20} />
               <span className="text-yellow-300 font-semibold">
                 Why Car Owners Love Luxy
               </span>
-            </motion.div>
+            </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Everything You Need to{" "}
@@ -197,7 +185,7 @@ const HomePage = () => {
               Comprehensive tools designed to maximize your car rental business
               potential
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {[
@@ -272,14 +260,10 @@ const HomePage = () => {
                 borderGradient: "from-teal-400/50 to-cyan-500/50",
               },
             ].map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className={`relative bg-gradient-to-br ${feature.bgGradient} backdrop-blur-md rounded-xl p-6 border border-white/20 hover:border-white/40 transition-all group cursor-pointer`}
+                className={`relative bg-gradient-to-br ${feature.bgGradient} backdrop-blur-md rounded-xl p-6 border border-white/20 hover:border-white/40 transition-all duration-300 group cursor-pointer will-change-transform`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div
@@ -287,14 +271,12 @@ const HomePage = () => {
                 ></div>
 
                 <div className="relative z-10 text-center">
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                    className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${feature.color} mb-4 group-hover:shadow-lg transition-all relative`}
+                  <div
+                    className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${feature.color} mb-4 group-hover:shadow-lg transition-all duration-300 relative`}
                   >
                     <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <feature.icon className="relative text-white" size={20} />
-                  </motion.div>
+                  </div>
 
                   <h3 className="text-sm font-bold text-white mb-2 leading-tight">
                     {feature.title}
@@ -303,40 +285,26 @@ const HomePage = () => {
                     {feature.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
       <HowItWorks howItWorksRef={howItWorksRef} />
 
-      {/* Enhanced Benefits Section */}
+      {/* Optimized Benefits Section */}
       <section className="py-16 relative overflow-hidden">
-        {/* Background */}
+        {/* Simplified Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-purple-50"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_25%_25%,rgba(133,23,178,0.08),transparent_50%)]"></div>
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_75%_75%,rgba(251,191,36,0.08),transparent_50%)]"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#8517B2]/10 to-purple-100 rounded-full px-6 py-3 mb-6 border border-purple-200"
-            >
+          <div className="text-center mb-12 opacity-0 animate-fade-in-up">
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#8517B2]/10 to-purple-100 rounded-full px-6 py-3 mb-6 border border-purple-200">
               <Star className="text-[#8517B2]" size={20} />
               <span className="text-[#8517B2] font-semibold">
                 Exclusive Benefits
               </span>
-            </motion.div>
+            </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Why Join the{" "}
@@ -348,7 +316,7 @@ const HomePage = () => {
               By joining the Luxy waitlist, you'll enjoy these exclusive
               advantages:
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
@@ -379,23 +347,17 @@ const HomePage = () => {
                 borderColor: "border-yellow-200 hover:border-yellow-300",
               },
             ].map((benefit, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className={`relative bg-gradient-to-br ${benefit.bgColor} backdrop-blur-sm rounded-xl p-6 border ${benefit.borderColor} transition-all duration-300 group cursor-pointer`}
+                className={`relative bg-gradient-to-br ${benefit.bgColor} backdrop-blur-sm rounded-xl p-6 border ${benefit.borderColor} transition-all duration-300 group cursor-pointer will-change-transform`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-center">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                    className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${benefit.color} mb-4 group-hover:shadow-lg transition-all`}
+                  <div
+                    className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${benefit.color} mb-4 group-hover:shadow-lg transition-all duration-300`}
                   >
                     <benefit.icon className="text-white" size={20} />
-                  </motion.div>
+                  </div>
 
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
                     {benefit.title}
@@ -404,7 +366,7 @@ const HomePage = () => {
                     {benefit.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -425,41 +387,22 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Modern Contact Form Section */}
+      {/* Optimized Contact Form Section */}
       <section ref={waitlistRef} className="py-20 relative overflow-hidden">
-        {/* Modern gradient background */}
+        {/* Simplified background */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-purple-50"></div>
-
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(124,58,237,0.02)_50%,transparent_75%)] bg-[length:20px_20px]"></div>
-
-        {/* Floating accent elements */}
-        <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-10 left-10 w-40 h-40 bg-gradient-to-br from-blue-400/10 to-cyan-400/10 rounded-full blur-2xl"></div>
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
+            {/* Optimized Left side - Content */}
+            <div className="space-y-8 opacity-0 animate-fade-in-up">
               <div className="space-y-4">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.6, type: "spring" }}
-                  viewport={{ once: true }}
-                  className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full px-4 py-2 border border-purple-200"
-                >
+                <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full px-4 py-2 border border-purple-200">
                   <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
                   <span className="text-purple-700 font-medium text-sm">
                     Join the Future of Car Rentals
                   </span>
-                </motion.div>
+                </div>
 
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   Ready to Start
@@ -474,7 +417,7 @@ const HomePage = () => {
                 </p>
               </div>
 
-              {/* Benefits list */}
+              {/* Optimized Benefits list */}
               <div className="space-y-4">
                 {[
                   "✓ No upfront fees or hidden costs",
@@ -482,13 +425,10 @@ const HomePage = () => {
                   "✓ Professional driver matching included",
                   "✓ 24/7 customer support & protection",
                 ].map((benefit, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center space-x-3"
+                    className="flex items-center space-x-3 will-change-transform"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">
                       <CheckCircle className="text-green-600" size={12} />
@@ -496,18 +436,15 @@ const HomePage = () => {
                     <span className="text-gray-700 font-medium">
                       {benefit.replace("✓ ", "")}
                     </span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            {/* Right side - Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative"
+            {/* Optimized Right side - Form */}
+            <div
+              className="relative opacity-0 animate-fade-in-up"
+              style={{ animationDelay: "0.2s" }}
             >
               <div className="bg-white rounded-3xl shadow-2xl shadow-purple-500/10 border border-gray-100 overflow-hidden">
                 {/* Form header */}
@@ -658,12 +595,10 @@ const HomePage = () => {
                       </div>
                     </div>
 
-                    {/* Submit Button */}
-                    <motion.button
+                    {/* Optimized Submit Button */}
+                    <button
                       type="submit"
-                      whileHover={{ scale: 1.01 }}
-                      whileTap={{ scale: 0.99 }}
-                      className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white py-4 px-8 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden"
+                      className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white py-4 px-8 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden hover:scale-101 active:scale-99"
                     >
                       <span className="relative z-10 flex items-center justify-center">
                         <span>Join the Waitlist</span>
@@ -673,7 +608,7 @@ const HomePage = () => {
                         />
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-purple-700 via-pink-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </motion.button>
+                    </button>
 
                     <p className="text-xs text-gray-500 text-center">
                       By joining, you agree to our terms of service and privacy
@@ -682,13 +617,12 @@ const HomePage = () => {
                   </form>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Enhanced Footer */}
-      
     </div>
   );
 };

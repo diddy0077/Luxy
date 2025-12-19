@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
@@ -94,6 +94,10 @@ const JoinWaitlist = () => {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth'})
+  }, [])
+
   const getStepStatus = (stepId) => {
     if (stepId < currentStep) return "completed";
     if (stepId === currentStep) return "current";
@@ -172,7 +176,7 @@ const JoinWaitlist = () => {
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200"
+            className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none"
             placeholder="Enter your phone number"
           />
         </div>
@@ -259,7 +263,7 @@ const JoinWaitlist = () => {
               name="carMake"
               value={formData.carMake}
               onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 appearance-none"
+              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 appearance-none outline-none"
             >
               <option value="">Select car make</option>
               {carMakes.map((make) => (
@@ -284,7 +288,7 @@ const JoinWaitlist = () => {
               name="carModel"
               value={formData.carModel}
               onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200"
+              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none"
               placeholder="e.g., Camry, Accord"
             />
           </div>
@@ -303,7 +307,7 @@ const JoinWaitlist = () => {
             name="carYear"
             value={formData.carYear}
             onChange={handleInputChange}
-            className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 appearance-none"
+            className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 appearance-none outline-none"
           >
             <option value="">Select car year</option>
             {carYears.map((year) => (
