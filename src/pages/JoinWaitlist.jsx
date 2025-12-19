@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
@@ -451,33 +451,21 @@ const JoinWaitlist = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 py-30 via-white to-purple-50 relative">
-      {/* Car Background with Enhanced Effects */}
+    <div className="min-h-screen bg-gradient-to-br py-30 from-gray-50 via-white to-purple-50 relative">
+      {/* Optimized Car Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.3 }}
-          transition={{ delay: 0.3, duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
-            filter: "brightness(0.3) contrast(1.1) saturate(1.2)",
+            filter: "brightness(0.3) contrast(0.5) saturate(1.0)",
+            transform: "translateZ(0)",
           }}
         />
 
-        {/* Enhanced Gradient Overlays */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.0, duration: 1 }}
-          className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50"
-        />
+        {/* Simplified Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
       </div>
 
       {/* Header */}
@@ -486,14 +474,10 @@ const JoinWaitlist = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-4 py-20">
+      <div className="relative z-10 container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          {/* Hero Section */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
-          >
+          {/* Optimized Hero Section */}
+          <div className="text-center mb-12 opacity-0 animate-fade-in-up">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-2xl">
               Join the Revolution
             </h1>
@@ -501,20 +485,15 @@ const JoinWaitlist = () => {
               Be part of the future of car sharing. Early members get exclusive
               benefits and priority access.
             </p>
-          </motion.div>
+          </div>
 
-          {/* Progress Steps */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-8"
-          >
+          {/* Optimized Progress Steps */}
+          <div className="mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <div className="flex items-center justify-center space-x-6 md:space-x-8">
               {steps.map((step, index) => (
                 <div key={step.id} className="flex items-center">
                   <div className="flex flex-col items-center">
-                    <motion.div
+                    <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
                         getStepStatus(step.id) === "completed"
                           ? "bg-gradient-to-r from-green-500 to-emerald-500 border-green-500 text-white shadow-green-500/25"
@@ -522,15 +501,13 @@ const JoinWaitlist = () => {
                           ? "bg-gradient-to-r from-purple-600 to-pink-600 border-purple-600 text-white shadow-purple-500/25"
                           : "bg-white/90 border-gray-300 text-gray-400 shadow-gray-400/25 backdrop-blur-sm"
                       }`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
                     >
                       {getStepStatus(step.id) === "completed" ? (
                         <Check size={18} />
                       ) : (
                         <step.icon size={18} />
                       )}
-                    </motion.div>
+                    </div>
                     <div className="mt-2 text-center">
                       <p
                         className={`text-xs font-semibold ${
@@ -554,24 +531,17 @@ const JoinWaitlist = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Form Container */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-6 md:p-8"
-          >
+          {/* Optimized Form Container */}
+          <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-6 md:p-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <AnimatePresence mode="wait">{renderStepContent()}</AnimatePresence>
 
             {/* Navigation */}
             <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
-              <motion.button
+              <button
                 onClick={prevStep}
                 disabled={currentStep === 1}
-                whileHover={{ scale: currentStep === 1 ? 1 : 1.02 }}
-                whileTap={{ scale: currentStep === 1 ? 1 : 0.98 }}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                   currentStep === 1
                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
@@ -579,34 +549,30 @@ const JoinWaitlist = () => {
                 }`}
               >
                 <span>Previous</span>
-              </motion.button>
+              </button>
 
               <div className="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1.5 rounded-full">
                 Step {currentStep} of {steps.length}
               </div>
 
               {currentStep < 3 ? (
-                <motion.button
+                <button
                   onClick={nextStep}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                   className="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200"
                 >
                   <span>Continue</span>
                   <ChevronRight size={16} />
-                </motion.button>
+                </button>
               ) : (
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                <button
                   className="flex items-center space-x-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200"
                 >
                   <span>Join the Waitlist</span>
                   <Check size={16} />
-                </motion.button>
+                </button>
               )}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
