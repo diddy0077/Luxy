@@ -340,34 +340,50 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Optimized Contact Form Section */}
+      {/* contact section */}
       <section ref={waitlistRef} className="py-20 relative overflow-hidden">
         {/* Simplified background */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-purple-50"></div>
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Optimized Left side - Content */}
+            {/* Optimized Left side - Value Proposition */}
             <div className="space-y-8 opacity-0 animate-fade-in-up">
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full px-4 py-2 border border-purple-200">
                   <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
                   <span className="text-purple-700 font-medium text-sm">
-                    Join the Future of Car Rentals
+                    Transform Your Car Into Income
                   </span>
                 </div>
 
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Ready to Start
+                  Turn Your Vehicle Into a
                   <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent block">
-                    Earning Today?
+                    Money-Making Machine
                   </span>
                 </h2>
 
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Join thousands of car owners who are already earning with
-                  Luxy. It takes less than 5 minutes to get started.
-                </p>
+                <div className="space-y-4">
+                  <p className="text-xl text-gray-600 leading-relaxed">
+                    Every day your car sits idle is potential earnings lost. Luxy connects you with verified travelers who need reliable transportation.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 gap-3">
+                    {[
+                      { icon: DollarSign, text: "Average $200-500+ monthly earnings" },
+                      { icon: Shield, text: "Full insurance & damage protection" },
+                      { icon: Clock3, text: "Flexible scheduling - you control availability" }
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                          <item.icon className="text-purple-600" size={16} />
+                        </div>
+                        <span className="text-gray-700 font-medium">{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
