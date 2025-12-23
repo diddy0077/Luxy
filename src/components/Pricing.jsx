@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   Check,
   Crown,
@@ -12,6 +13,7 @@ import {
 } from "lucide-react";
 
 const Pricing = () => {
+  const nav = useNavigate()
   const plans = [
     {
       name: "Early Bird",
@@ -34,6 +36,7 @@ const Pricing = () => {
         "Early access to Luxy's premium tools",
       ],
       cta: "Register for ₦50,000",
+      to: '/join-waitlist',
       ctaStyle:
         "bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 hover:from-yellow-500 hover:via-orange-600 hover:to-yellow-700",
       icon: Crown,
@@ -55,6 +58,7 @@ const Pricing = () => {
         "Limited visibility at launch",
       ],
       cta: "Join Waitlist",
+      to: '/join-waitlist',
       ctaStyle:
         "bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800",
       icon: Star,
@@ -193,6 +197,7 @@ const Pricing = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                 viewport={{ once: true }}
+                onClick={()  => nav(plan.to)} 
                 className={`w-full py-4 px-6 rounded-2xl text-white font-bold text-lg shadow-lg transition-all duration-300 ${plan.ctaStyle}`}
               >
                 {plan.cta}

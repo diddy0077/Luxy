@@ -21,13 +21,16 @@ const Header = ({ aboutRef,featureRef,waitlistRef,pricingRef,howItWorksRef,isJoi
   }, []);
 
   const scrollToSection = (ref) => {
-    if (ref?.current) {
-      ref.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
     setIsMobileMenuOpen(false);
+    if (ref?.current) {
+      // Delay scroll to allow mobile menu animation to complete
+      setTimeout(() => {
+        ref.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 300);
+    }
   };
   const nav = useNavigate()
 
@@ -88,7 +91,12 @@ const Header = ({ aboutRef,featureRef,waitlistRef,pricingRef,howItWorksRef,isJoi
   } else {
     scrollToSection(link.ref);
   }
-};
+  };
+  
+  const handleMobileNavigation = (link) => {
+    handleNavClick(link)
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
  
 
   return (
@@ -230,7 +238,7 @@ const Header = ({ aboutRef,featureRef,waitlistRef,pricingRef,howItWorksRef,isJoi
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.02, x: 5 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => handleNavClick(link.ref)}
+                    onClick={() => handleNavClick(link)}
                     className={`
                       flex items-center space-x-3 px-6 py-4 rounded-2xl font-semibold text-left transition-all duration-300
                       ${
