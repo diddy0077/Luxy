@@ -10,7 +10,10 @@ const Hero = ({waitlistRef}) => {
 
 
   return (
-     <section className="relative min-h-screen py-20 pt-40 flex items-center justify-center overflow-hidden">
+     <section className="relative min-h-screen py-20 px-6 pt-40 flex items-center justify-center overflow-hidden" style={{
+       backgroundImage: 'linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px)',
+       backgroundSize: '60px 60px'
+     }}>
            
             <div className="absolute inset-0 bg-gradient-to-br from-[#8517B2] via-purple-800 to-indigo-900"></div> 
             <div className="absolute inset-0">
@@ -125,13 +128,13 @@ const Hero = ({waitlistRef}) => {
     
             {/* Hero Content with Enhanced Layout */}
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Left Content */}
+              <div className="flex flex-col items-center justify-center">
+                {/* Centered Content */}
                 <motion.div
                   initial={{ x: -100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="text-left"
+                  className="text-center"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -141,52 +144,38 @@ const Hero = ({waitlistRef}) => {
                   >
                     <Award className="text-yellow-300" size={18} />
                     <span className="text-white font-semibold text-xs sm:text-sm">
-                      Early Bird Offer — Limited Time Only
+                      Nigeria's Premium Luxury Car Network
                     </span>
                     <Sparkles className="text-yellow-300" size={16} />
                   </motion.div>
     
-                  <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                  <h1 className="text-4xl md:text-8xl font-bold font-uni text-white mb-6 leading-tight">
                     <motion.span
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.6, duration: 0.8 }}
-                      className="block"
+                      className="block "
                     >
-                      Let Your Car{" "}
+                      Your Luxury Car,
                     </motion.span>
                     <motion.span
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.8, duration: 0.8 }}
-                      className="block bg-gradient-to-r from-yellow-300 via-orange-300 to-pink-300 bg-clip-text text-transparent"
+                      className="block text-gradient-gold"
                     >
-                      Work Smarter
+                      Working for You.
                     </motion.span>
-                    <motion.p
-                      initial={{ opacity: 0, y: 50 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1.0, duration: 0.8 }}
-                      className="text-2xl md:text-3xl font-medium text-purple-100 mt-4"
-                    >
-                      with{" "}
-                      <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent font-bold">
-                        Luxy
-                      </span>
-                    </motion.p>
+                    <p className='italic text-2xl text-gray-300'>Stop Letting Depreciation Win.</p>
                   </h1>
     
                   <motion.p
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
-                    className="text-md md:text-lg text-purple-100 mb-8 leading-relaxed font-medium"
+                    className="max-w-4xl text-md md:text-lg text-gray-200 mb-8 leading-relaxed font-medium"
                   >
-                    Turn your vehicle into a profit-generating asset with our{" "}
-                    <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent font-semibold">
-                      AI-powered platform
-                    </span>
-                    , connecting you with verified renters for seamless earnings.
+                    Luxy connects Nigerian luxury car owners directly with high-net-worth clients and airline demand. Set your price, keep 100% of earnings, and turn your vehicle into a premium income asset.
                   </motion.p>
     
                   <motion.div
@@ -203,90 +192,24 @@ const Hero = ({waitlistRef}) => {
                         boxShadow: "0 25px 50px rgba(251, 191, 36, 0.4)",
                       }}
                       whileTap={{ scale: 0.95 }}
-                      className="relative bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 text-white px-6 py-3 rounded-full text-lg font-bold shadow-2xl hover:shadow-yellow-500/30 transition-all overflow-hidden group"
+                      className="inline-flex self-center mx-auto items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 font-sans bg-gradient-gold text-primary-foreground font-bold shadow-gold  hover:scale-[1.02] active:scale-[0.98] sm:py-6 py-3 h-14 rounded-lg sm:px-10 px-6 text-lg group"
               >
                 
-                      <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-yellow-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  
                       <span className="relative z-10 flex items-center">
-                        Join the Waitlist
+                        JOIN THE EARLY OWNERS LIST
                         <ArrowRight
                           className="ml-2 group-hover:translate-x-1 transition-transform"
                           size={20}
                         />
                       </span>
                     </motion.button>
-    
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 1.6, duration: 0.8 }}
-                      className="flex items-center space-x-2 text-purple-200"
-                    >
-                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                      <span className="text-sm font-medium">
-                        Launching in Nigeria Soon
-                      </span>
-                    </motion.div>
+
                   </motion.div>
                 </motion.div>
     
-                {/* Right Content - Stats/Cards */}
-                <motion.div
-                  initial={{ x: 100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="space-y-6"
-                >
-                  {/* Key Benefits Cards */}
-                  {[
-                    {
-                      icon: DollarSign,
-                      title: "Earn More",
-                      description: "Turn your parked car into passive income",
-                      gradient: "from-green-400 to-emerald-600",
-                      delay: 1.8,
-                    },
-                    {
-                      icon: Shield,
-                      title: "100% Secure",
-                      description: "Verified renters with escrow protection",
-                      gradient: "from-blue-400 to-cyan-600",
-                      delay: 2.0,
-                    },
-                    {
-                      icon: Target,
-                      title: "Full Control",
-                      description: "Set your prices and availability",
-                      gradient: "from-purple-400 to-pink-600",
-                      delay: 2.2,
-                    },
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: item.delay, duration: 0.6 }}
-                      whileHover={{ scale: 1.02, x: 10 }}
-                      className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-white/40 transition-all group"
-                    >
-                      <div className="flex items-center space-x-4">
-                        <div
-                          className={`w-12 h-12 rounded-xl bg-gradient-to-r ${item.gradient} flex items-center justify-center group-hover:shadow-lg transition-all`}
-                        >
-                          <item.icon className="text-white" size={24} />
-                        </div>
-                        <div>
-                          <h3 className="text-white font-semibold text-lg">
-                            {item.title}
-                          </h3>
-                          <p className="text-purple-200 text-sm">
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
+             
+                
               </div>
             </div>
     

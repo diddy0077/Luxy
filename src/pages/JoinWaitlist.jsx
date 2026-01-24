@@ -112,51 +112,51 @@ const JoinWaitlist = () => {
       className="space-y-6"
     >
       <div className="text-center mb-6">
-        <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-3">
-          <User className="text-white" size={16} />
+        <div className="w-12 h-12 bg-gold-10 border border-gold-30 rounded-full flex items-center justify-center mx-auto mb-3">
+          <User className="text-gold" size={20} />
         </div>
-        <h2 className="text-xl font-bold text-gray-900 mb-2">
+        <h2 className="text-xl font-bold text-white mb-2">
           Let's get to know you
         </h2>
-        <p className="text-gray-600 text-sm">
+        <p className="text-muted-foreground text-sm">
           Share your details so we can personalize your experience
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-gray-800">
+          <label className="block text-sm font-semibold text-foreground">
             Full Name
           </label>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <User className="h-4 w-4 text-gray-400" />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
+              <User className="h-4 w-4" />
             </div>
             <input
               type="text"
               name="fullName"
               value={formData.fullName}
               onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none"
+              className="w-full pl-10 pr-4 py-2.5 bg-secondary border border-border rounded-xl focus:ring-1 focus:ring-gold focus:border-gold text-foreground placeholder:text-muted-foreground transition-all duration-200 outline-none"
               placeholder="Enter your full name"
             />
           </div>
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-gray-800">
+          <label className="block text-sm font-semibold text-foreground">
             Email Address
           </label>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Mail className="h-4 w-4 text-gray-400" />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
+              <Mail className="h-4 w-4" />
             </div>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none"
+              className="w-full pl-10 pr-4 py-2.5 bg-secondary border border-border rounded-xl focus:ring-1 focus:ring-gold focus:border-gold text-foreground placeholder:text-muted-foreground transition-all duration-200 outline-none"
               placeholder="Enter your email"
             />
           </div>
@@ -164,26 +164,26 @@ const JoinWaitlist = () => {
       </div>
 
       <div className="space-y-2">
-        <label className="block text-sm font-semibold text-gray-800">
+        <label className="block text-sm font-semibold text-foreground">
           Phone Number
         </label>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Phone className="h-4 w-4 text-gray-400" />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
+            <Phone className="h-4 w-4" />
           </div>
           <input
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none"
+            className="w-full pl-10 pr-4 py-2.5 bg-secondary border border-border rounded-xl focus:ring-1 focus:ring-gold focus:border-gold text-foreground placeholder:text-muted-foreground transition-all duration-200 outline-none"
             placeholder="Enter your phone number"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <label className="block text-sm font-semibold text-gray-800">
+        <label className="block text-sm font-semibold text-foreground">
           Do you currently rent out your car?
         </label>
         <div className="grid grid-cols-2 gap-3">
@@ -192,8 +192,8 @@ const JoinWaitlist = () => {
             onClick={() => setFormData({ ...formData, currentlyRents: "yes" })}
             className={`p-3 rounded-xl border-2 transition-all duration-200 ${
               formData.currentlyRents === "yes"
-                ? "border-purple-500 bg-purple-50 text-purple-700"
-                : "border-gray-200 hover:border-gray-300 text-gray-600"
+                ? "border-gold bg-gold-10 text-gold"
+                : "border-border hover:border-gold-30 text-muted-foreground bg-secondary"
             }`}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -202,8 +202,8 @@ const JoinWaitlist = () => {
               <Check
                 className={`mx-auto mb-1 ${
                   formData.currentlyRents === "yes"
-                    ? "text-purple-600"
-                    : "text-gray-400"
+                    ? "text-gold"
+                    : "text-muted-foreground"
                 }`}
                 size={16}
               />
@@ -215,14 +215,14 @@ const JoinWaitlist = () => {
             onClick={() => setFormData({ ...formData, currentlyRents: "no" })}
             className={`p-3 rounded-xl border-2 transition-all duration-200 ${
               formData.currentlyRents === "no"
-                ? "border-purple-500 bg-purple-50 text-purple-700"
-                : "border-gray-200 hover:border-gray-300 text-gray-600"
+                ? "border-gold bg-gold-10 text-gold"
+                : "border-border hover:border-gold-30 text-muted-foreground bg-secondary"
             }`}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <div className="text-center">
-              <div className="w-4 h-4 mx-auto mb-1 border-2 border-current rounded-full"></div>
+              <div className={`w-4 h-4 mx-auto mb-1 border-2 rounded-full ${formData.currentlyRents === "no" ? "border-gold" : "border-muted-foreground"}`}></div>
               <span className="font-medium text-sm">No</span>
             </div>
           </motion.button>
@@ -239,31 +239,31 @@ const JoinWaitlist = () => {
       className="space-y-6"
     >
       <div className="text-center mb-6">
-        <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-3">
-          <Car className="text-white" size={16} />
+        <div className="w-12 h-12 bg-gold-10 border border-gold-30 rounded-full flex items-center justify-center mx-auto mb-3">
+          <Car className="text-gold" size={20} />
         </div>
-        <h2 className="text-xl font-bold text-gray-900 mb-2">
+        <h2 className="text-xl font-bold text-white mb-2">
           Tell us about your car
         </h2>
-        <p className="text-gray-600 text-sm">
+        <p className="text-muted-foreground text-sm">
           This helps us provide better service and recommendations
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-gray-800">
+          <label className="block text-sm font-semibold text-foreground">
             Car Make
           </label>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Car className="h-4 w-4 text-gray-400" />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
+              <Car className="h-4 w-4" />
             </div>
             <select
               name="carMake"
               value={formData.carMake}
               onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 appearance-none outline-none"
+              className="w-full pl-10 pr-4 py-2.5 bg-secondary border border-border rounded-xl focus:ring-1 focus:ring-gold focus:border-gold text-foreground transition-all duration-200 appearance-none outline-none"
             >
               <option value="">Select car make</option>
               {carMakes.map((make) => (
@@ -276,19 +276,19 @@ const JoinWaitlist = () => {
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-gray-800">
+          <label className="block text-sm font-semibold text-foreground">
             Car Model
           </label>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <MapPin className="h-4 w-4 text-gray-400" />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
+              <MapPin className="h-4 w-4" />
             </div>
             <input
               type="text"
               name="carModel"
               value={formData.carModel}
               onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none"
+              className="w-full pl-10 pr-4 py-2.5 bg-secondary border border-border rounded-xl focus:ring-1 focus:ring-gold focus:border-gold text-foreground placeholder:text-muted-foreground transition-all duration-200 outline-none"
               placeholder="e.g., Camry, Accord"
             />
           </div>
@@ -296,18 +296,18 @@ const JoinWaitlist = () => {
       </div>
 
       <div className="space-y-2">
-        <label className="block text-sm font-semibold text-gray-800">
+        <label className="block text-sm font-semibold text-foreground">
           Car Year
         </label>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Calendar className="h-4 w-4 text-gray-400" />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
+            <Calendar className="h-4 w-4" />
           </div>
           <select
             name="carYear"
             value={formData.carYear}
             onChange={handleInputChange}
-            className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 appearance-none outline-none"
+            className="w-full pl-10 pr-4 py-2.5 bg-secondary border border-border rounded-xl focus:ring-1 focus:ring-gold focus:border-gold text-foreground transition-all duration-200 appearance-none outline-none"
           >
             <option value="">Select car year</option>
             {carYears.map((year) => (
@@ -319,16 +319,16 @@ const JoinWaitlist = () => {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 border border-blue-100">
+      <div className="bg-gold-5 rounded-xl p-4 border border-gold-20">
         <div className="flex items-start space-x-3">
-          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-            <Shield className="text-white" size={16} />
+          <div className="w-8 h-8 bg-gold-10 rounded-full flex items-center justify-center flex-shrink-0">
+            <Shield className="text-gold" size={16} />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-1">
+            <h3 className="text-sm font-semibold text-white mb-1">
               Why do we need this information?
             </h3>
-            <p className="text-gray-600 text-sm">
+            <p className="text-muted-foreground text-sm">
               This helps us verify your vehicle and provide accurate pricing
               estimates. Your information is secure and will only be used for
               service verification.
@@ -347,46 +347,46 @@ const JoinWaitlist = () => {
       className="space-y-6"
     >
       <div className="text-center mb-6">
-        <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
-          <Star className="text-white" size={16} />
+        <div className="w-12 h-12 bg-gold-10 border border-gold-30 rounded-full flex items-center justify-center mx-auto mb-3">
+          <Star className="text-gold" size={20} />
         </div>
-        <h2 className="text-xl font-bold text-gray-900 mb-2">
+        <h2 className="text-xl font-bold text-white mb-2">
           Ready to join Luxy?
         </h2>
-        <p className="text-gray-600 text-sm">
+        <p className="text-muted-foreground text-sm">
           Review your information and become part of the future of car sharing
         </p>
       </div>
 
-      <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border border-green-100">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+      <div className="bg-secondary rounded-xl p-4 border border-gold-20">
+        <h3 className="text-lg font-semibold text-white mb-4">
           Your Information
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-3">
-            <div className="flex justify-between items-center py-2 border-b border-green-200/50">
-              <span className="font-medium text-gray-700 text-sm">Full Name</span>
-              <span className="text-gray-600 text-sm">
+            <div className="flex justify-between items-center py-2 border-b border-gold-20">
+              <span className="font-medium text-muted-foreground text-sm">Full Name</span>
+              <span className="text-white text-sm">
                 {formData.fullName || "Not provided"}
               </span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b border-green-200/50">
-              <span className="font-medium text-gray-700 text-sm">Email</span>
-              <span className="text-gray-600 text-sm">
+            <div className="flex justify-between items-center py-2 border-b border-gold-20">
+              <span className="font-medium text-muted-foreground text-sm">Email</span>
+              <span className="text-white text-sm">
                 {formData.email || "Not provided"}
               </span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b border-green-200/50">
-              <span className="font-medium text-gray-700 text-sm">Phone</span>
-              <span className="text-gray-600 text-sm">
+            <div className="flex justify-between items-center py-2 border-b border-gold-20">
+              <span className="font-medium text-muted-foreground text-sm">Phone</span>
+              <span className="text-white text-sm">
                 {formData.phone || "Not provided"}
               </span>
             </div>
             <div className="flex justify-between items-center py-2">
-              <span className="font-medium text-gray-700 text-sm">
+              <span className="font-medium text-muted-foreground text-sm">
                 Currently Rents Car
               </span>
-              <span className="text-gray-600 text-sm">
+              <span className="text-white text-sm">
                 {formData.currentlyRents === "yes"
                   ? "Yes"
                   : formData.currentlyRents === "no"
@@ -396,21 +396,21 @@ const JoinWaitlist = () => {
             </div>
           </div>
           <div className="space-y-3">
-            <div className="flex justify-between items-center py-2 border-b border-green-200/50">
-              <span className="font-medium text-gray-700 text-sm">Car Make</span>
-              <span className="text-gray-600 text-sm">
+            <div className="flex justify-between items-center py-2 border-b border-gold-20">
+              <span className="font-medium text-muted-foreground text-sm">Car Make</span>
+              <span className="text-white text-sm">
                 {formData.carMake || "Not selected"}
               </span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b border-green-200/50">
-              <span className="font-medium text-gray-700 text-sm">Car Model</span>
-              <span className="text-gray-600 text-sm">
+            <div className="flex justify-between items-center py-2 border-b border-gold-20">
+              <span className="font-medium text-muted-foreground text-sm">Car Model</span>
+              <span className="text-white text-sm">
                 {formData.carModel || "Not provided"}
               </span>
             </div>
             <div className="flex justify-between items-center py-2">
-              <span className="font-medium text-gray-700 text-sm">Car Year</span>
-              <span className="text-gray-600 text-sm">
+              <span className="font-medium text-muted-foreground text-sm">Car Year</span>
+              <span className="text-white text-sm">
                 {formData.carYear || "Not selected"}
               </span>
             </div>
@@ -418,16 +418,16 @@ const JoinWaitlist = () => {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-100">
+      <div className="bg-gold-5 rounded-xl p-4 border border-gold-20">
         <div className="flex items-start space-x-3">
-          <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-            <Clock className="text-white" size={16} />
+          <div className="w-8 h-8 bg-gold-10 rounded-full flex items-center justify-center flex-shrink-0">
+            <Clock className="text-gold" size={16} />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-1">
+            <h3 className="text-sm font-semibold text-white mb-1">
               What happens next?
             </h3>
-            <div className="text-gray-600 space-y-1">
+            <div className="text-muted-foreground space-y-1">
               <p className="text-sm">• You'll receive a confirmation email within 5 minutes</p>
               <p className="text-sm">• We'll review your application within 24-48 hours</p>
               <p className="text-sm">• Early members get exclusive benefits and reduced fees</p>
@@ -455,7 +455,7 @@ const JoinWaitlist = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br py-30 from-gray-50 via-white to-purple-50 relative">
+    <div className="min-h-screen bg-background py-30 relative">
       {/* Optimized Car Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -468,12 +468,12 @@ const JoinWaitlist = () => {
         />
 
         {/* Simplified Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-transparent to-background" />
       </div>
 
       {/* Header */}
-      <div className="relative z-10">
+      <div className="relative z-50">
         <Header isJoin={true} />
       </div>
 
@@ -500,10 +500,10 @@ const JoinWaitlist = () => {
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
                         getStepStatus(step.id) === "completed"
-                          ? "bg-gradient-to-r from-green-500 to-emerald-500 border-green-500 text-white shadow-green-500/25"
+                          ? "bg-gold text-black border-gold shadow-gold"
                           : getStepStatus(step.id) === "current"
-                          ? "bg-gradient-to-r from-purple-600 to-pink-600 border-purple-600 text-white shadow-purple-500/25"
-                          : "bg-white/90 border-gray-300 text-gray-400 shadow-gray-400/25 backdrop-blur-sm"
+                          ? "bg-gold text-black border-gold shadow-gold"
+                          : "bg-secondary border-border text-muted-foreground"
                       }`}
                     >
                       {getStepStatus(step.id) === "completed" ? (
@@ -516,21 +516,21 @@ const JoinWaitlist = () => {
                       <p
                         className={`text-xs font-semibold ${
                           getStepStatus(step.id) === "current"
-                            ? "text-white"
+                            ? "text-gold"
                             : getStepStatus(step.id) === "completed"
-                            ? "text-green-400"
-                            : "text-gray-300"
+                            ? "text-gold"
+                            : "text-muted-foreground"
                         }`}
                       >
                         {step.title}
                       </p>
-                      <p className="text-xs text-gray-300 max-w-20 mt-0.5">
+                      <p className="text-xs text-muted-foreground max-w-20 mt-0.5">
                         {step.description}
                       </p>
                     </div>
                   </div>
                   {index < steps.length - 1 && (
-                    <div className="hidden md:block w-12 h-0.5 bg-gray-300/50 mx-6"></div>
+                    <div className="hidden md:block w-12 h-0.5 bg-border mx-6"></div>
                   )}
                 </div>
               ))}
@@ -538,38 +538,38 @@ const JoinWaitlist = () => {
           </div>
 
           {/* Optimized Form Container */}
-          <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-6 md:p-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <div className="bg-gradient-card backdrop-blur-xl rounded-2xl shadow-elevated border border-gold-20 p-6 md:p-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <AnimatePresence mode="wait">{renderStepContent()}</AnimatePresence>
 
             {/* Navigation */}
-            <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
+            <div className="flex justify-between items-center mt-8 pt-6 border-t border-gold-20">
               <button
                 onClick={prevStep}
                 disabled={currentStep === 1}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                className={`flex text-gray-400 border border-border disabled:text-muted-foreground disabled:border-muted-foregrounditems-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                   currentStep === 1
-                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    ? "bg-secondary text-muted-foreground/50 cursor-not-allowed"
+                    : "bg-secondary text-muted-foreground hover:text-white border border-border"
                 }`}
               >
                 <span>Previous</span>
               </button>
 
-              <div className="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1.5 rounded-full">
+              <div className="text-xs text-muted-foreground font-medium bg-secondary px-3 py-1.5 rounded-full border border-border">
                 Step {currentStep} of {steps.length}
               </div>
 
               {currentStep < 3 ? (
                 <button
                   onClick={nextStep}
-                  className="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200"
+                  className="flex items-center space-x-2 bg-gradient-gold text-black px-6 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-gold/25 transition-all duration-200"
                 >
                   <span>Continue</span>
                   <ChevronRight size={16} />
                 </button>
               ) : (
                 <button
-                  className="flex items-center space-x-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200"
+                  className="flex items-center space-x-2 bg-gradient-gold text-black px-6 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-gold/25 transition-all duration-200"
                 >
                   <span>Join the Waitlist</span>
                   <Check size={16} />

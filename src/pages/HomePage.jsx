@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Pricing from "../components/Pricing";
@@ -7,6 +7,7 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import HowItWorks from "../components/HowItWorks";
 import { motion } from "framer-motion";
+import NextToHero from "../components/NextToHero";
 
 import {
   Car,
@@ -37,9 +38,17 @@ import {
   Lock,
   Split,
 } from "lucide-react";
+import SilentCost from "../components/SilentCost";
+import DirectAccess from "../components/DirectAccess";
+import ProgressBar from "../components/ProgressBar";
+import Extras from "../components/Extras";
+import RevenueCalculator from "../components/RevenueCalculator";
+import ProtctedGrowth from "../components/ProtctedGrowth";
+import LimitedOffer from "../components/LimitedOffer";
+import FAQ from "../components/FAQ";
 
 const HomePage = () => {
-  const navigate = useNavigate();
+
   
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -50,9 +59,11 @@ const HomePage = () => {
   const waitlistRef = useRef(null);
   const pricingRef = useRef(null);
   const howItWorksRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#080C16] relative">
+       {isOpen && <div onClick={() => setIsOpen(false)} className="min-h-screen z-50 bg-transparent inset-0 w-full absolute"></div>}
       <Header
         aboutRef={aboutRef}
         featureRef={featureRef}
@@ -62,396 +73,22 @@ const HomePage = () => {
         isJoin={false}
       />
       <Hero waitlistRef={waitlistRef} />
-
-      {/* Dashboard Preview Section */}
-      {/* <section className="py-16 bg-gray-50" ref={dashboardRef}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.6, type: "spring" }}
-              viewport={{ once: true }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#8517B2]/10 to-purple-100 rounded-full px-6 py-3 mb-6 border border-purple-200"
-            >
-              <TrendingUp className="text-[#8517B2]" size={20} />
-              <span className="text-[#8517B2] font-semibold">
-                Dashboard Preview
-              </span>
-            </motion.div>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              See Your{" "}
-              <span className="bg-gradient-to-r from-[#8517B2] via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Dashboard
-              </span>{" "}
-              in Action
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Preview how your car rental business dashboard will look once
-              you're onboarded to Luxy.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <Dashboard />
-          </motion.div>
-        </div>
-      </section> */}
+      <NextToHero />
+      <SilentCost/>
+      <DirectAccess/>
+      <HowItWorks/>
+  
 
       <div ref={pricingRef}>
         <Pricing />
       </div>
-
-      <About aboutRef={aboutRef} />
-      {/* Optimized Features Section */}
-      <section ref={featureRef} className="py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#8517B2] via-purple-800 to-indigo-900"></div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 opacity-0 animate-fade-in-up">
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/20">
-              <Sparkles className="text-yellow-300" size={20} />
-              <span className="text-yellow-300 font-semibold">
-                Why Car Owners Love Luxy
-              </span>
-            </div>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Everything You Need to{" "}
-              <span className="bg-gradient-to-r from-yellow-300 via-orange-300 to-pink-300 bg-clip-text text-transparent">
-                Succeed
-              </span>
-            </h2>
-            <p className="text-lg text-purple-100 max-w-2xl mx-auto">
-              Comprehensive tools designed to maximize your car rental business
-              potential
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Brain,
-                title: "AI Demand Prediction",
-                description: "Smart algorithms predict peak rental periods.",
-                color: "from-purple-400 to-indigo-500",
-                bgGradient: "from-purple-500/20 to-indigo-600/20",
-                borderGradient: "from-purple-400/50 to-indigo-500/50",
-              },
-              {
-                icon: UserCheck,
-                title: "Driver Assignment",
-                description:
-                  "Automated matching with verified professional drivers.",
-                color: "from-blue-400 to-cyan-500",
-                bgGradient: "from-blue-500/20 to-cyan-600/20",
-                borderGradient: "from-blue-400/50 to-cyan-500/50",
-              },
-              {
-                icon: Monitor,
-                title: "All-in-One Platform",
-                description:
-                  "Complete rental business management in one place.",
-                color: "from-green-400 to-emerald-500",
-                bgGradient: "from-green-500/20 to-emerald-600/20",
-                borderGradient: "from-green-400/50 to-emerald-500/50",
-              },
-              {
-                icon: Headphones,
-                title: "24/7 Support",
-                description: "Round-the-clock assistance for car owners.",
-                color: "from-orange-400 to-red-500",
-                bgGradient: "from-orange-500/20 to-red-600/20",
-                borderGradient: "from-orange-400/50 to-red-500/50",
-              },
-              {
-                icon: Percent,
-                title: "Keep 100% Earnings",
-                description:
-                  "Luxy does NOT take any commission from your rental income.",
-                color: "from-yellow-400 to-orange-500",
-                bgGradient: "from-yellow-500/20 to-orange-600/20",
-                borderGradient: "from-yellow-400/50 to-orange-500/50",
-              },
-              {
-                icon: Lock,
-                title: "Secure Bookings",
-                description:
-                  "Verified travelers and secure payment processing.",
-                color: "from-pink-400 to-rose-500",
-                bgGradient: "from-pink-500/20 to-rose-600/20",
-                borderGradient: "from-pink-400/50 to-rose-500/50",
-              },
-              {
-                icon: Split,
-                title: "Auto Earnings Split",
-                description:
-                  "Automated earnings distribution between owner and driver.",
-                color: "from-indigo-400 to-purple-500",
-                bgGradient: "from-indigo-500/20 to-purple-600/20",
-                borderGradient: "from-indigo-400/50 to-purple-500/50",
-              },
-              {
-                icon: Shield,
-                title: "Verified Network",
-                description:
-                  "Every renter is thoroughly vetted with identity verification.",
-                color: "from-teal-400 to-cyan-500",
-                bgGradient: "from-teal-500/20 to-cyan-600/20",
-                borderGradient: "from-teal-400/50 to-cyan-500/50",
-              },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className={`relative bg-gradient-to-br ${feature.bgGradient} backdrop-blur-md rounded-xl p-6 border border-white/20 hover:border-white/40 transition-all duration-300 group cursor-pointer will-change-transform`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div
-                  className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${feature.borderGradient} opacity-50`}
-                ></div>
-
-                <div className="relative z-10 text-center">
-                  <div
-                    className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${feature.color} mb-4 group-hover:shadow-lg transition-all duration-300 relative`}
-                  >
-                    <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <feature.icon className="relative text-white" size={20} />
-                  </div>
-
-                  <h3 className="text-sm font-bold text-white mb-2 leading-tight">
-                    {feature.title}
-                  </h3>
-                  <p className="text-xs text-purple-100 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <HowItWorks howItWorksRef={howItWorksRef} />
-
-      {/* Optimized Benefits Section */}
-      <section className="py-16 relative overflow-hidden">
-        {/* Simplified Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-purple-50"></div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 opacity-0 animate-fade-in-up">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#8517B2]/10 to-purple-100 rounded-full px-6 py-3 mb-6 border border-purple-200">
-              <Star className="text-[#8517B2]" size={20} />
-              <span className="text-[#8517B2] font-semibold">
-                Exclusive Benefits
-              </span>
-            </div>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Join the{" "}
-              <span className="bg-gradient-to-r from-[#8517B2] via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Waitlist Now
-              </span>
-            </h2>
-            <p className="text-lg text-gray-700 font-medium max-w-2xl mx-auto">
-              By joining the Luxy waitlist, you'll enjoy these exclusive
-              advantages:
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              {
-                title: "Early Access",
-                description: "Get exclusive early access before public launch",
-                icon: Target,
-                color: "from-purple-500 to-pink-500",
-                bgColor: "from-purple-500/10 to-pink-500/10",
-                borderColor: "border-purple-200 hover:border-purple-300",
-              },
-              {
-                title: "Reduced Fees",
-                description:
-                  "Enjoy dramatically reduced signup fees for early partners",
-                icon: DollarSign,
-                color: "from-green-500 to-emerald-500",
-                bgColor: "from-green-500/10 to-emerald-500/10",
-                borderColor: "border-green-200 hover:border-green-300",
-              },
-              {
-                title: "Get Featured",
-                description:
-                  "Have your car featured during Luxy's launch campaign",
-                icon: Award,
-                color: "from-yellow-500 to-orange-500",
-                bgColor: "from-yellow-500/10 to-orange-500/10",
-                borderColor: "border-yellow-200 hover:border-yellow-300",
-              },
-            ].map((benefit, index) => (
-              <div
-                key={index}
-                className={`relative bg-gradient-to-br ${benefit.bgColor} backdrop-blur-sm rounded-xl p-6 border ${benefit.borderColor} transition-all duration-300 group cursor-pointer will-change-transform`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-center">
-                  <div
-                    className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${benefit.color} mb-4 group-hover:shadow-lg transition-all duration-300`}
-                  >
-                    <benefit.icon className="text-white" size={20} />
-                  </div>
-
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-center mt-10"
-          >
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-full px-6 py-3 border border-yellow-200">
-              <Sparkles className="text-orange-600" size={18} />
-              <span className="text-orange-700 font-semibold text-sm">
-                Limited Time Opportunity
-              </span>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* contact section */}
-      <section ref={waitlistRef} className="py-20 relative overflow-hidden">
-        {/* Simplified background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-purple-50"></div>
-
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Optimized Left side - Value Proposition */}
-            <div className="space-y-8 opacity-0 animate-fade-in-up">
-              <div className="space-y-6">
-                <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full px-4 py-2 border border-purple-200">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                  <span className="text-purple-700 font-medium text-sm">
-                    Transform Your Car Into Income
-                  </span>
-                </div>
-
-                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Turn Your Vehicle Into a
-                  <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent block">
-                    Money-Making Machine
-                  </span>
-                </h2>
-
-                <div className="space-y-4">
-                  <p className="text-xl text-gray-600 leading-relaxed">
-                    Every day your car sits idle is potential earnings lost. Luxy connects you with verified travelers who need reliable transportation.
-                  </p>
-                  
-                  <div className="grid grid-cols-1 gap-3">
-                    {[
-                      { icon: DollarSign, text: "Average $200-500+ monthly earnings" },
-                      { icon: Shield, text: "Full insurance & damage protection" },
-                      { icon: Clock3, text: "Flexible scheduling - you control availability" }
-                    ].map((item, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                          <item.icon className="text-purple-600" size={16} />
-                        </div>
-                        <span className="text-gray-700 font-medium">{item.text}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Optimized Right side - Call to Action */}
-            <div
-              className="relative opacity-0 animate-fade-in-up"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <div className="bg-white rounded-3xl shadow-2xl shadow-purple-500/10 border border-gray-100 overflow-hidden p-12 text-center">
-                {/* CTA header */}
-                <div className="mb-8">
-                  <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Star className="text-white" size={32} />
-                  </div>
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                    Ready to Join Luxy?
-                  </h3>
-                  <p className="text-lg text-gray-600 mb-8">
-                    Get early access and exclusive benefits when you join our waitlist
-                  </p>
-                </div>
-
-                {/* CTA Content */}
-                <div className="space-y-6 mb-8">
-                  <div className="grid grid-cols-1 gap-4">
-                    {[
-                      "✓ No upfront fees or hidden costs",
-                      "✓ Keep 100% of your rental income", 
-                      "✓ Professional driver matching included",
-                      "✓ 24/7 customer support & protection",
-                    ].map((benefit, index) => (
-                      <div key={index} className="flex items-center justify-center space-x-3">
-                        <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">
-                          <CheckCircle className="text-green-600" size={12} />
-                        </div>
-                        <span className="text-gray-700 font-medium">
-                          {benefit.replace("✓ ", "")}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <button
-                  onClick={() => navigate('/join-waitlist')}
-                  className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white py-4 px-8 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden hover:scale-101 active:scale-99"
-                >
-                  <span className="relative z-10 flex items-center justify-center">
-                    <span>Join the Waitlist</span>
-                    <ArrowRight
-                      className="ml-2 group-hover:translate-x-1 transition-transform"
-                      size={20}
-                    />
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-700 via-pink-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </button>
-
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  Takes less than 5 minutes to get started
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Enhanced Footer */}
+      <ProgressBar/>
+      <Extras/>
+      <RevenueCalculator isOpen={isOpen} setIsOpen={setIsOpen}/>
+     <ProtctedGrowth/>
+     <LimitedOffer/>
+     <FAQ/>
+     
     </div>
   );
 };

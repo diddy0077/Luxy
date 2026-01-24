@@ -34,11 +34,13 @@ const Pricing = () => {
         "Keep 100% of what you charge",
         "Instant visibility to travelers & corporate clients",
         "Early access to Luxy's premium tools",
+        'Founder-level support',
+        'First access'
       ],
       cta: "Register for ₦50,000",
       to: '/join-waitlist',
       ctaStyle:
-        "bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 hover:from-yellow-500 hover:via-orange-600 hover:to-yellow-700",
+        "inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 font-sans bg-gradient-gold text-primary-foreground font-bold shadow-gold  hover:scale-[1.02] active:scale-[0.98] py-6 h-14 rounded-lg px-5 text-md group",
       icon: Crown,
       gradient: "from-purple-600 via-pink-500 to-orange-400",
       bgGradient: "from-purple-500/10 via-pink-500/10 to-orange-400/10",
@@ -68,14 +70,8 @@ const Pricing = () => {
   ];
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-purple-50"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_25%_25%,rgba(133,23,178,0.08),transparent_50%)]"></div>
-      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_75%_75%,rgba(251,191,36,0.08),transparent_50%)]"></div>
-
+    <section className="py-5 sm:py-16 relative overflow-hidden bg-[#080C16]">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,25 +84,24 @@ const Pricing = () => {
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.6, type: "spring" }}
             viewport={{ once: true }}
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#8517B2]/10 to-purple-100 rounded-full px-6 py-3 mb-6 border border-purple-200"
+            className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#8517B2]/20 to-purple-800/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-purple-500/30"
           >
             <Crown className="text-[#8517B2]" size={20} />
-            <span className="text-[#8517B2] font-semibold">
+            <span className="text-purple-300 font-semibold">
               Choose Your Path
             </span>
           </motion.div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Early Bird vs. Standard Pricing
           </h2>
-          <p className="text-lg text-gray-700 font-medium max-w-3xl mx-auto">
+          <p className="text-lg text-gray-300 font-medium max-w-3xl mx-auto">
             Lock in your forever price today or pay 5x more when we launch
             nationwide.
           </p>
         </motion.div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -115,10 +110,10 @@ const Pricing = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className={`relative bg-white rounded-3xl p-8 shadow-2xl border-2 transition-all duration-500 ${
+              className={`relative bg-gray-800/50 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-2 transition-all duration-500 ${
                 plan.popular
                   ? "border-yellow-300 shadow-yellow-500/20"
-                  : "border-gray-200 hover:border-purple-300"
+                  : "border-gray-600/30 hover:border-purple-400/50"
               }`}
             >
               {/* Popular Badge */}
@@ -128,45 +123,45 @@ const Pricing = () => {
                   whileInView={{ scale: 1, rotate: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                   viewport={{ once: true }}
-                  className={`absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r ${plan.badgeColor} text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg`}
+                  className={`absolute z-40 -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r ${plan.badgeColor} text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg`}
                 >
                   {plan.badge}
                 </motion.div>
               )}
 
               {/* Header */}
-              <div className="text-center mb-8">
+              <div className="text-center mb-6">
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${plan.gradient} mb-4`}
+                  className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-card border-2 border-gold-40 mb-4`}
                 >
-                  <plan.icon className="text-white" size={28} />
+                  <plan.icon className="text-gold" size={28} />
                 </motion.div>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   {plan.name}
                 </h3>
-                <p className="text-gray-600 font-medium mb-4">
+                <p className="text-gray-300 font-medium mb-4">
                   {plan.subtitle}
                 </p>
 
                 <div className="mb-4">
-                  <span className="text-4xl md:text-5xl font-black text-gray-900">
+                  <span className="text-3xl md:text-4xl font-black text-white">
                     {plan.price}
                   </span>
-                  <span className="text-lg text-gray-600 ml-2">
+                  <span className="text-lg text-gray-300 ml-2">
                     / {plan.period}
                   </span>
                 </div>
 
-                <p className="text-gray-700 font-medium">{plan.description}</p>
+                <p className="text-gray-300 font-medium">{plan.description}</p>
               </div>
 
               {/* Features */}
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-6">
                 {plan.features.map((feature, featureIndex) => (
                   <motion.div
                     key={featureIndex}
@@ -177,14 +172,14 @@ const Pricing = () => {
                       delay: 0.6 + index * 0.1 + featureIndex * 0.1,
                     }}
                     viewport={{ once: true }}
-                    className="flex items-start space-x-3"
+                    className="flex items-center space-x-3"
                   >
                     <div
-                      className={`flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r ${plan.gradient} flex items-center justify-center mt-0.5`}
+                      className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center`}
                     >
-                      <Check className="text-white" size={14} />
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock w-8 h-8 text-gold mb-4"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                     </div>
-                    <span className="text-gray-700 font-medium">{feature}</span>
+                    <span className="text-gray-300 font-medium">{feature}</span>
                   </motion.div>
                 ))}
               </div>
@@ -198,7 +193,7 @@ const Pricing = () => {
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                 viewport={{ once: true }}
                 onClick={()  => nav(plan.to)} 
-                className={`w-full py-4 px-6 rounded-2xl text-white font-bold text-lg shadow-lg transition-all duration-300 ${plan.ctaStyle}`}
+                className={`w-full py-3 px-4 rounded-2xl text-white font-bold text-base shadow-lg transition-all duration-300 ${plan.ctaStyle}`}
               >
                 {plan.cta}
               </motion.button>
@@ -210,7 +205,7 @@ const Pricing = () => {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.0 }}
                   viewport={{ once: true }}
-                  className="text-center text-green-600 font-bold text-sm mt-4"
+                  className="text-center text-green-400 font-bold text-sm mt-4"
                 >
                   {plan.savings}
                 </motion.p>
@@ -219,36 +214,8 @@ const Pricing = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-[#8517B2]/10 to-purple-100 rounded-2xl p-8 border border-purple-200">
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.6, type: "spring" }}
-              viewport={{ once: true }}
-              className="flex justify-center mb-4"
-            >
-              <div className="bg-gradient-to-r from-[#8517B2] to-purple-600 p-3 rounded-2xl">
-                <TrendingUp className="text-white" size={24} />
-              </div>
-            </motion.div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              Why Early Bird Pricing Matters
-            </h3>
-            <p className="text-gray-700 font-medium max-w-2xl mx-auto">
-              Join the founding car owners and secure your spot in Nigeria's
-              most innovative car rental platform. Early supporters get lifetime
-              benefits and premium positioning.
-            </p>
-          </div>
-        </motion.div>
+        
+      
       </div>
     </section>
   );
