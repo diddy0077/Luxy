@@ -88,7 +88,6 @@ const HomePage = () => {
      <ProtctedGrowth/>
      <LimitedOffer/>
      <FAQ/>
-     
     </div>
   );
 };

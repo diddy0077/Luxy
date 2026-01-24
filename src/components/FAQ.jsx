@@ -31,9 +31,9 @@ const FAQ = () => {
   };
 
   return (
-    <section className="flex min-h-screen flex-col p-4 py-8 mt-10  bg-background text-white">
+    <section className="flex pb-16 flex-col p-4 py-8 mt-10  bg-background text-white">
       <section className="py-0 bg-background relative">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
               Frequently Asked <span class="text-gradient-gold">Questions</span>
@@ -44,7 +44,7 @@ const FAQ = () => {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`border border-border rounded-xl px-6 bg-gradient-card transition-colors ${
+                  className={`border border-border rounded-xl px-4 bg-gradient-card transition-colors ${
                     openIndex === index ? "border-gold/40" : ""
                   }`}
                 >
@@ -52,7 +52,7 @@ const FAQ = () => {
                     <button
                       type="button"
                       onClick={() => toggleFAQ(index)}
-                      className="flex flex-1 items-center justify-between text-left text-lg font-medium hover:no-underline hover:text-gold py-6 transition-all"
+                      className="flex text-sm sm:text-md flex-1 items-center justify-between text-left text-lg font-medium hover:no-underline hover:text-gold py-6 transition-all"
                     >
                       {faq.question}
                       <svg

@@ -8,7 +8,7 @@ const Footer = () => {
         <div class="text-center mb-12" style={{opacity: 1, transform: 'none'}}>
           <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold/10 border border-gold/30">
             <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-            <span class="text-gold font-medium">
+            <span class="text-gold text-xs sm:text-sm font-medium">
               200 early owner slots available across Nigeria. 113 already
               reserved.
             </span>

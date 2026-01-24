@@ -10,6 +10,8 @@ const RevenueCalculator = ({isOpen, setIsOpen}) => {
   const [input, setInput] = useState('55,000');
   const [selectedDays, setSelectedDays] = useState(20);
 
+  const numericInput = parseInt(input.replace(/[^0-9]/g, "") || "0");
+  const isValid = numericInput >= 50000;
 
   const options = [5, 10, 15, 20, 25, 30]
 
@@ -80,7 +82,7 @@ const RevenueCalculator = ({isOpen, setIsOpen}) => {
                 type="text"
                 className="flex h-10 w-full rounded-md border px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus:border-gold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus:ring-[hsl(43_74%_49%)] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm pl-8 bg-secondary border-border text-foreground"
                 placeholder="Enter daily rental price"
-                value={input}
+                value={input.toLocaleString()}
                 onChange={(e) => setInput(e.target.value)}
                 required
               />
@@ -163,15 +165,18 @@ const RevenueCalculator = ({isOpen, setIsOpen}) => {
               Estimated Earnings for {selectedDays} days
             </span>
           </div>
-          {input ? (<div className="text-center">
+          {input && isValid ? (<div className="text-center">
             <div className="text-3xl md:text-4xl font-serif font-bold text-gradient-gold mb-2">
-              ₦{(parseInt(input.replace(/[^0-9]/g, "") || "0") * selectedDays).toLocaleString()}
+              ₦{(numericInput * selectedDays).toLocaleString()}
             </div>
             <p className="text-sm text-gold">₦{input} × {selectedDays} days</p>
           </div>) : (
-            <div class="text-xl text-muted-foreground">Enter your daily rental price to see earnings</div>
+            <div className="text-xl text-muted-foreground text-center">
+              {!input ? "Enter your daily rental price to see earnings" : "Minimum rental price is ₦50,000"}
+            </div>
           )}
         </div>
+        {input && !isValid && <p className="text-center text-sm text-red-600 mt-2">Rent per day cannot be less than ₦50,000</p>}
         <p className="text-center text-sm text-muted-foreground mt-6">
           <span className="text-gold font-medium">You keep 100%.</span> No
           commissions.

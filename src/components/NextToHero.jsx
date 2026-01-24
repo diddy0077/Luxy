@@ -18,11 +18,11 @@ const NextToHero = () => {
             </svg>
           </div>
         </div>
-        <div className="absolute bottom-6 left-6 px-4 py-1 sm:px-6 sm:py-3 mr-4 sm:mr-0 rounded-lg bg-[#1B2232CC] backdrop-blur-sm border border-border text-[#8A94A8]">
+        <div className="absolute bottom-6 sm:left-6 left-4 px-4 py-1 sm:px-6 sm:py-3 sm:mr-0 rounded-lg bg-[#1B2232CC] backdrop-blur-sm border border-border text-[#8A94A8]">
           <p className="text-sm ">Private Garage</p>
           <p className="text-xs ">Idle Asset</p>
         </div>
-        <div className="absolute bottom-6 right-6 px-4 py-1 sm:px-6 sm:py-3 rounded-lg bg-[#D9A52033] backdrop-blur-sm border border-card text-[#D9A520]">
+        <div className="absolute bottom-6 sm:right-6 right-4 px-4 py-1 sm:px-6 sm:py-3  rounded-lg bg-[#D9A52033] backdrop-blur-sm border border-card text-[#D9A520]">
           <p className="text-sm text-gold">Premium Service</p>
           <p className="text-xs text-gold/60">Revenue Asset</p>
         </div>

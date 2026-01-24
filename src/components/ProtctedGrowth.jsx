@@ -2,7 +2,7 @@ import React from "react";
 
 const ProtctedGrowth = () => {
   return (
-    <section className="flex min-h-screen flex-col p-8 mt-10 bg-[#080C16] text-white">
+    <section className="flex min-h-screen flex-col p-3 mt-10 bg-[#080C16] text-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12" style={{opacity: 1, transform: 'none',}}>
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 mb-6">

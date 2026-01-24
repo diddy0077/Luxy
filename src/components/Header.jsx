@@ -44,7 +44,7 @@ const Header = ({ isJoin }) => {
   ];
 
   const location = useLocation(); 
-  const currentPath = location.pathname; 
+
 
   // 1. Filter the links array based on the current path
  
@@ -68,7 +68,7 @@ const Header = ({ isJoin }) => {
     isScrolled
       ? "bg-gray-900/95 backdrop-blur-md shadow-2xl border-b border-purple-500/20"
       : isJoin
-      ? "bg-gradient-to-br from-[#8517B2] via-purple-800 to-indigo-900"
+      ? ""
       : "bg-transparent"
   }
 `}
@@ -109,7 +109,7 @@ const Header = ({ isJoin }) => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleNavClick(link)}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 font-sans bg-gradient-gold text-primary-foreground font-bold shadow-gold  hover:scale-[1.02] active:scale-[0.98] py-6 h-14 rounded-lg px-5 text-md group"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-gradient-gold text-primary-foreground font-bold shadow-gold  hover:scale-[1.02] active:scale-[0.98] py-3 rounded-lg px-5 text-sm group"
               >
                 <div className="flex items-center space-x-2">
                   

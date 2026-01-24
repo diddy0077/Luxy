@@ -14,6 +14,7 @@ import {
   Clock,
 } from "lucide-react";
 import Header from "../components/Header";
+import CustomDropdown from "../components/CustomDropdown";
 
 const JoinWaitlist = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -30,29 +31,31 @@ const JoinWaitlist = () => {
     carYear: "",
   });
 
-  const carMakes = [
-    "Toyota",
-    "Honda",
-    "Ford",
-    "Chevrolet",
-    "BMW",
-    "Mercedes-Benz",
-    "Audi",
-    "Volkswagen",
-    "Nissan",
-    "Hyundai",
-    "Kia",
-    "Mazda",
-    "Lexus",
-    "Acura",
-    "Infiniti",
-    "Cadillac",
-    "Lincoln",
-    "Other",
-  ];
+  const carData = {
+    Toyota: ["Camry", "Corolla", "RAV4", "Highlander", "Land Cruiser", "Prado", "Hilux", "Sienna", "Yaris", "Avalon"],
+    Honda: ["Accord", "Civic", "CR-V", "Pilot", "City", "HR-V", "Odyssey"],
+    Ford: ["Explorer", "Edge", "Mustang", "F-150", "Ranger", "Escape", "Expedition"],
+    Chevrolet: ["Camaro", "Tahoe", "Suburban", "Malibu", "Equinox", "Traverse"],
+    BMW: ["3 Series", "5 Series", "7 Series", "X3", "X5", "X6", "X7", "M3", "M5"],
+    "Mercedes-Benz": ["C-Class", "E-Class", "S-Class", "G-Wagon", "GLE", "GLC", "CLA", "A-Class"],
+    Audi: ["A3", "A4", "A6", "A8", "Q3", "Q5", "Q7", "Q8"],
+    Volkswagen: ["Golf", "Passat", "Tiguan", "Touareg", "Jetta", "Atlas"],
+    Nissan: ["Altima", "Maxima", "Pathfinder", "Patrol", "Rogue", "Sentra"],
+    Hyundai: ["Elantra", "Sonata", "Tucson", "Santa Fe", "Palisade", "Accent"],
+    Kia: ["Cerato", "Optima", "Sportage", "Sorento", "Telluride", "Rio"],
+    Mazda: ["Mazda3", "Mazda6", "CX-5", "CX-9", "CX-30"],
+    Lexus: ["ES", "IS", "LS", "RX", "GX", "LX", "NX"],
+    Acura: ["TLX", "MDX", "RDX", "ILX"],
+    Infiniti: ["Q50", "Q60", "QX50", "QX60", "QX80"],
+    Cadillac: ["Escalade", "XT4", "XT5", "XT6", "CT4", "CT5"],
+    Lincoln: ["Navigator", "Aviator", "Corsair", "Nautilus"],
+    Other: ["Other Model"]
+  };
+
+  const carMakes = Object.keys(carData);
 
   const currentYear = new Date().getFullYear();
-  const carYears = Array.from({ length: 20 }, (_, i) => currentYear - i);
+  const carYears = Array.from({ length: currentYear - 2010 + 1 }, (_, i) => currentYear - i);
 
   const steps = [
     {
@@ -259,19 +262,13 @@ const JoinWaitlist = () => {
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
               <Car className="h-4 w-4" />
             </div>
-            <select
-              name="carMake"
+            <CustomDropdown
+              options={carMakes}
               value={formData.carMake}
-              onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-2.5 bg-secondary border border-border rounded-xl focus:ring-1 focus:ring-gold focus:border-gold text-foreground transition-all duration-200 appearance-none outline-none"
-            >
-              <option value="">Select car make</option>
-              {carMakes.map((make) => (
-                <option key={make} value={make}>
-                  {make}
-                </option>
-              ))}
-            </select>
+              onChange={(value) => setFormData({ ...formData, carMake: value, carModel: "", carYear: "" })}
+              placeholder="Select car make"
+              className="pl-10"
+            />
           </div>
         </div>
 
@@ -283,13 +280,13 @@ const JoinWaitlist = () => {
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
               <MapPin className="h-4 w-4" />
             </div>
-            <input
-              type="text"
-              name="carModel"
+            <CustomDropdown
+              options={formData.carMake ? carData[formData.carMake] : []}
               value={formData.carModel}
-              onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-2.5 bg-secondary border border-border rounded-xl focus:ring-1 focus:ring-gold focus:border-gold text-foreground placeholder:text-muted-foreground transition-all duration-200 outline-none"
-              placeholder="e.g., Camry, Accord"
+              onChange={(value) => setFormData({ ...formData, carModel: value, carYear: "" })}
+              placeholder="Select car model"
+              disabled={!formData.carMake}
+              className="pl-10"
             />
           </div>
         </div>
@@ -303,19 +300,14 @@ const JoinWaitlist = () => {
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
             <Calendar className="h-4 w-4" />
           </div>
-          <select
-            name="carYear"
+          <CustomDropdown
+            options={carYears}
             value={formData.carYear}
-            onChange={handleInputChange}
-            className="w-full pl-10 pr-4 py-2.5 bg-secondary border border-border rounded-xl focus:ring-1 focus:ring-gold focus:border-gold text-foreground transition-all duration-200 appearance-none outline-none"
-          >
-            <option value="">Select car year</option>
-            {carYears.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
+            onChange={(value) => setFormData({ ...formData, carYear: value })}
+            placeholder="Select car year"
+            disabled={!formData.carModel}
+            className="pl-10"
+          />
         </div>
       </div>
 
@@ -455,7 +447,7 @@ const JoinWaitlist = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background py-30 relative">
+    <div className="min-h-screen bg-background pt-24 pb-12 md:py-32 relative">
       {/* Optimized Car Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -482,7 +474,7 @@ const JoinWaitlist = () => {
         <div className="max-w-4xl mx-auto">
           {/* Optimized Hero Section */}
           <div className="text-center mb-12 opacity-0 animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-2xl">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-2xl">
               Join the Revolution
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto drop-shadow-lg font-medium">
@@ -493,7 +485,7 @@ const JoinWaitlist = () => {
 
           {/* Optimized Progress Steps */}
           <div className="mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <div className="flex items-center justify-center space-x-6 md:space-x-8">
+            <div className="flex items-center justify-center space-x-2 sm:space-x-6 md:space-x-8">
               {steps.map((step, index) => (
                 <div key={step.id} className="flex items-center">
                   <div className="flex flex-col items-center">
@@ -524,7 +516,7 @@ const JoinWaitlist = () => {
                       >
                         {step.title}
                       </p>
-                      <p className="text-xs text-muted-foreground max-w-20 mt-0.5">
+                      <p className="hidden sm:block text-xs text-muted-foreground max-w-20 mt-0.5">
                         {step.description}
                       </p>
                     </div>
@@ -546,7 +538,7 @@ const JoinWaitlist = () => {
               <button
                 onClick={prevStep}
                 disabled={currentStep === 1}
-                className={`flex text-gray-400 border border-border disabled:text-muted-foreground disabled:border-muted-foregrounditems-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                className={`flex text-gray-400 border border-border disabled:text-muted-foreground disabled:border-muted-foreground items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                   currentStep === 1
                     ? "bg-secondary text-muted-foreground/50 cursor-not-allowed"
                     : "bg-secondary text-muted-foreground hover:text-white border border-border"
@@ -555,21 +547,24 @@ const JoinWaitlist = () => {
                 <span>Previous</span>
               </button>
 
-              <div className="text-xs text-muted-foreground font-medium bg-secondary px-3 py-1.5 rounded-full border border-border">
+              <div className="text-xs hidden sm:block text-muted-foreground font-medium bg-secondary px-3 py-1.5 rounded-full border border-border">
                 Step {currentStep} of {steps.length}
+              </div>
+              <div className="text-xs sm:hidden text-muted-foreground font-medium bg-secondary px-3 py-1.5 rounded-full border border-border">
+                 {currentStep} of {steps.length}
               </div>
 
               {currentStep < 3 ? (
                 <button
                   onClick={nextStep}
-                  className="flex items-center space-x-2 bg-gradient-gold text-black px-6 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-gold/25 transition-all duration-200"
+                  className="flex items-center space-x-2 bg-gradient-gold text-black px-4 sm:px-6 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-gold/25 transition-all duration-200"
                 >
                   <span>Continue</span>
                   <ChevronRight size={16} />
                 </button>
               ) : (
                 <button
-                  className="flex items-center space-x-2 bg-gradient-gold text-black px-6 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-gold/25 transition-all duration-200"
+                  className="flex items-center space-x-2 bg-gradient-gold text-black px-4 sm:px-6 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-gold/25 transition-all duration-200"
                 >
                   <span>Join the Waitlist</span>
                   <Check size={16} />
