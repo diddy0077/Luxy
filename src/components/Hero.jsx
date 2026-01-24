@@ -1,16 +1,18 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Award,Sparkles,ArrowRight,DollarSign ,Shield,Target } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
-const Hero = ({waitlistRef}) => {
- 
+const Hero = () => {
+   const nav = useNavigate()
+
   const handleScroll = () => {
-    waitlistRef?.current.scrollIntoView({behavior: 'smooth'})
+    nav('/join-waitlist')
   }
 
 
   return (
-     <section className="relative min-h-screen py-20 px-6 pt-40 flex items-center justify-center overflow-hidden" style={{
+     <section className="relative min-h-screen py-20 px-6 pt-10 sm:pt-40 flex items-center justify-center overflow-hidden" style={{
        backgroundImage: 'linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px)',
        backgroundSize: '60px 60px'
      }}>
@@ -57,74 +59,8 @@ const Hero = ({waitlistRef}) => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_60%,black/30)]"></div>
     
             {/* Premium Ambient Effects */}
-            <motion.div
-              animate={{
-                rotate: 360,
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.3, 0.1],
-              }}
-              transition={{
-                duration: 25,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="absolute top-10 right-10 w-[32rem] h-[32rem] bg-gradient-to-r from-yellow-400/20 to-pink-500/20 rounded-full blur-3xl"
-            />
-            <motion.div
-              animate={{
-                rotate: -360,
-                scale: [1, 1.1, 1],
-                opacity: [0.1, 0.25, 0.1],
-              }}
-              transition={{
-                duration: 30,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="absolute bottom-20 left-20 w-[40rem] h-[40rem] bg-gradient-to-r from-purple-400/25 to-indigo-600/25 rounded-full blur-3xl"
-            />
-    
-            {/* Floating Geometric Elements Around Car */}
-            <motion.div
-              animate={{
-                y: [0, -30, 0],
-                x: [0, 15, 0],
-                rotate: [0, 180, 360],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute top-32 left-32 w-20 h-20 border-2 border-yellow-300/40 rounded-xl rotate-45 backdrop-blur-sm"
-            />
-            <motion.div
-              animate={{
-                y: [0, 25, 0],
-                x: [0, -20, 0],
-                rotate: [360, 180, 0],
-                scale: [1, 0.8, 1],
-              }}
-              transition={{
-                duration: 18,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute top-48 right-40 w-16 h-16 border-2 border-pink-300/40 rounded-full backdrop-blur-sm"
-            />
-            <motion.div
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 90, 180, 270, 360],
-              }}
-              transition={{
-                duration: 15,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute bottom-40 left-1/4 w-12 h-12 border-2 border-blue-300/30 rounded-lg transform rotate-12 backdrop-blur-sm"
-            />
+            <div className="absolute top-10 right-10 w-[32rem] h-[32rem] bg-gradient-to-r from-yellow-400/20 to-pink-500/20 rounded-full blur-3xl opacity-20" />
+            <div className="absolute bottom-20 left-20 w-[40rem] h-[40rem] bg-gradient-to-r from-purple-400/25 to-indigo-600/25 rounded-full blur-3xl opacity-20" />
     
             {/* Hero Content with Enhanced Layout */}
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

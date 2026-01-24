@@ -70,7 +70,7 @@ const Pricing = () => {
   ];
 
   return (
-    <section className="py-5 sm:py-16 relative overflow-hidden bg-[#080C16]">
+    <section className="py-5 sm:py-0 relative overflow-hidden bg-[#080C16]">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

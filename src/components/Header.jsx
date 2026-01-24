@@ -63,7 +63,7 @@ const Header = ({ isJoin }) => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-40 pointer-events-auto transition-all duration-500
+      className={`fixed top-0 left-0 right-0 z-50 pointer-events-auto transition-all duration-500
   ${
     isScrolled
       ? "bg-gray-900/95 backdrop-blur-md shadow-2xl border-b border-purple-500/20"
@@ -184,13 +184,11 @@ const Header = ({ isJoin }) => {
                     whileHover={{ scale: 1.02, x: 5 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => handleNavClick(link)}
-                    className={`
-                      flex items-center space-x-3 px-6 py-4 rounded-2xl font-semibold text-left transition-all duration-300
-                      ${
-                        link.isCTA
-                          ? "bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 text-white shadow-lg"
-                          : "text-gray-300 hover:text-purple-400 hover:bg-purple-900/30"
-                      }
+                    className={`inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-gradient-gold text-primary-foreground font-bold shadow-gold hover:scale-[1.02] active:scale-[0.98] py-3 rounded-lg px-5 text-sm group ${
+                      link.isCTA
+                        ? "bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 text-white shadow-lg"
+                        : "text-gray-300 hover:text-purple-400 hover:bg-purple-900/30"
+                    } flex items-center space-x-3 px-6 py-4 rounded-2xl font-semibold text-left transition-all duration-300
                     `}
                   >
                     <link.icon size={20} />
@@ -205,5 +203,9 @@ const Header = ({ isJoin }) => {
     </motion.header>
   );
 };
+
+
+
+
 
 export default Header;

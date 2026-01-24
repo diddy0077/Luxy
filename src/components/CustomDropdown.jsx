@@ -45,7 +45,7 @@ const CustomDropdown = ({ options, value, onChange, placeholder, className, disa
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute top-full left-0 z-50 mt-2 w-full rounded-md border border-border bg-secondary shadow-md max-h-60 overflow-y-auto">
+        <div className="absolute top-full left-0 z-50 mt-2 w-full rounded-md border border-border bg-secondary shadow-md max-h-60 overflow-y-auto no-scrollbar">
           <div className="py-1 bg-background">
             {options.map((option) => (
               <button

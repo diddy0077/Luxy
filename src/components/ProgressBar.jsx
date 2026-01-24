@@ -1,9 +1,10 @@
 import React,{useEffect, useState, useRef} from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProgressBar = () => {
     const barRef = useRef(null);
   const [progress, setProgress] = useState(0);
-
+  const nav = useNavigate()
 
    useEffect(() => {
      const observer = new IntersectionObserver(
@@ -51,7 +52,7 @@ const ProgressBar = () => {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 font-sans bg-gradient-gold text-primary-foreground font-bold shadow-gold hover:shadow-elevated hover:scale-[1.02] active:scale-[0.98] py-6 h-14 rounded-lg px-10 text-lg group">
+          <button onClick={() => nav('/join-waitlist')} className="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 font-sans bg-gradient-gold text-primary-foreground font-bold shadow-gold hover:shadow-elevated hover:scale-[1.02] active:scale-[0.98] py-6 h-14 rounded-lg px-10 text-lg group">
             Secure My Early Owner Slot
             <svg
               xmlns="http://www.w3.org/2000/svg"

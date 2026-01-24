@@ -69,7 +69,7 @@ const HowItWorks = () => {
 
 
   return (
-    <section className="how-it-works bg-[#080C16] pt-20 mb-10 min-h-screen text-white">
+    <section className="how-it-works bg-[#080C16] pt-20 mb-30 text-white">
       <h1 className="sm:text-6xl text-4xl font-uni font-bold text-center mb-10">
         How It <span className="text-gradient-gold">Works</span>{" "}
       </h1>
@@ -86,7 +86,7 @@ const HowItWorks = () => {
                   <div class="w-20 h-20 rounded-2xl bg-gradient-card border-2 border-gold-40 flex items-center justify-center shadow-gold mx-auto relative z-10">
                     {item.icon}
                   </div>
-                  <span class="absolute -top-3 z-50 -right-3 w-8 h-8 rounded-full bg-gold text-primary-foreground text-sm font-bold flex items-center justify-center">
+                  <span class="absolute -top-3 z-40 -right-3 w-8 h-8 rounded-full bg-gold text-primary-foreground text-sm font-bold flex items-center justify-center">
                     {item.number}
                   </span>
                 </div>
