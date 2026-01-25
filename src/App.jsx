@@ -6,6 +6,7 @@ import JoinWaitlist from "./pages/JoinWaitlist";
 import { Routes, Route } from "react-router-dom"
 import Footer from "./components/Footer";
 import NotFound from "./pages/NotFound";
+import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -33,7 +34,9 @@ const App = () => {
           <Route path='/join-waitlist' element={<JoinWaitlist />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-        {showScrollTop && <ScrollToTop />}
+        <AnimatePresence>
+          {showScrollTop && <ScrollToTop />}
+        </AnimatePresence>
         <Footer />
       </div>
     </ToastProvider>
