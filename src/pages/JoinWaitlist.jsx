@@ -56,6 +56,7 @@ const JoinWaitlist = () => {
 
   const currentYear = new Date().getFullYear();
   const carYears = Array.from({ length: currentYear - 2010 + 1 }, (_, i) => currentYear - i);
+  const [error, setError] = useState('')
 
   const steps = [
     {
@@ -86,6 +87,23 @@ const JoinWaitlist = () => {
   };
 
   const nextStep = () => {
+    if(currentStep === 1) {
+      if(!formData.fullName || !formData.email || !formData.phone || !formData.currentlyRents) {
+         setError('All fields are required!')
+         setTimeout(() => {
+          setError('')
+         }, 2000)
+          return
+      } 
+    } else if(currentStep === 2) {
+      if(!formData.carMake || !formData.carModel || !formData.carYear) {
+        setError('All fields are required!')
+        setTimeout(() => {
+          setError('')
+         }, 2000)
+         return
+      }
+    }
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1);
     }
@@ -530,8 +548,10 @@ const JoinWaitlist = () => {
           </div>
 
           {/* Optimized Form Container */}
+        
           <div className="bg-gradient-card backdrop-blur-xl rounded-2xl shadow-elevated border border-gold-20 p-6 md:p-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <AnimatePresence mode="wait">{renderStepContent()}</AnimatePresence>
+            {error && <p className="text-red-600 text-sm mt-3 font-semibold">{error}</p>}
 
             {/* Navigation */}
             <div className="flex justify-between items-center mt-8 pt-6 border-t border-gold-20">
@@ -554,6 +574,7 @@ const JoinWaitlist = () => {
                  {currentStep} of {steps.length}
               </div>
 
+
               {currentStep < 3 ? (
                 <button
                   onClick={nextStep}
@@ -571,6 +592,7 @@ const JoinWaitlist = () => {
                 </button>
               )}
             </div>
+          
           </div>
         </div>
       </div>
