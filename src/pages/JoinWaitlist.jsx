@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
@@ -32,12 +32,79 @@ const JoinWaitlist = () => {
   });
 
   const carData = {
-    Toyota: ["Camry", "Corolla", "RAV4", "Highlander", "Land Cruiser", "Prado", "Hilux", "Sienna", "Yaris", "Avalon"],
-    Honda: ["Accord", "Civic", "CR-V", "Pilot", "City", "HR-V", "Odyssey"],
-    Ford: ["Explorer", "Edge", "Mustang", "F-150", "Ranger", "Escape", "Expedition"],
-    Chevrolet: ["Camaro", "Tahoe", "Suburban", "Malibu", "Equinox", "Traverse"],
-    BMW: ["3 Series", "5 Series", "7 Series", "X3", "X5", "X6", "X7", "M3", "M5"],
-    "Mercedes-Benz": ["C-Class", "E-Class", "S-Class", "G-Wagon", "GLE", "GLC", "CLA", "A-Class"],
+    Toyota: [
+      "4RUNNER",
+      "86",
+      "ASIA DRAGON",
+      "ASIA LION",
+      "AVALON",
+      "BZ4X",
+      "CAMRY",
+      "CAMRY SOLARA",
+      "CELICA GT",
+      "CELICA ST",
+      "C-HR",
+      "COROLLA",
+      "CROWN",
+      "ECHO",
+      "EXTRA LONG",
+      "FJ CRUISER",
+      "FRONTLANDER",
+      "GR 86",
+      "GRAND HIGHLANDER",
+      "GRANVIA",
+      "GR COROLLA",
+      "HIGHLANDER",
+      "HILUX",
+      "IZOA",
+      "LAND CRUISER",
+      "LEVIN",
+      "LONG BED",
+      "MATRIX",
+      "MIRAI",
+      "MR2",
+      "PICKUP",
+      "PRADO",
+      "PRIUS",
+      "RAV4",
+      "SCION",
+      "SEQUOIA",
+      "SHORT BED",
+      "SIENNA",
+      "STANDARD BED",
+      "SUPRA",
+      "T100",
+      "TACOMA",
+      "TUNDRA",
+      "VENZA",
+      "VIOS",
+      "WILDLANDER",
+      "YARIS",
+    ],
+    Acura: ['CL', 'TL', 'RL', 'CDX', 'CSX', 'ILX', 'INTEGRA', 'MDX', 'NSX', 'RDX', 'RLX', 'MDX', 'ZDX', 'TSX', 'RSX'],
+    Aeolus: ['AX7', 'YIXUAN'],
+    Aion: ['UT', 'Y', 'Y PLUS'],
+    BMW: [
+      "3 Series",
+      "5 Series",
+      "7 Series",
+      "X3",
+      "X5",
+      "X6",
+      "X7",
+      "M3",
+      "M5",
+    ],
+    "Mercedes-Benz": [
+      "C-Class",
+      "E-Class",
+      "S-Class",
+      "G-Wagon",
+      "GLE",
+      "GLC",
+      "CLA",
+      "A-Class",
+    ],
     Audi: ["A3", "A4", "A6", "A8", "Q3", "Q5", "Q7", "Q8"],
     Volkswagen: ["Golf", "Passat", "Tiguan", "Touareg", "Jetta", "Atlas"],
     Nissan: ["Altima", "Maxima", "Pathfinder", "Patrol", "Rogue", "Sentra"],
@@ -45,18 +112,20 @@ const JoinWaitlist = () => {
     Kia: ["Cerato", "Optima", "Sportage", "Sorento", "Telluride", "Rio"],
     Mazda: ["Mazda3", "Mazda6", "CX-5", "CX-9", "CX-30"],
     Lexus: ["ES", "IS", "LS", "RX", "GX", "LX", "NX"],
-    Acura: ["TLX", "MDX", "RDX", "ILX"],
     Infiniti: ["Q50", "Q60", "QX50", "QX60", "QX80"],
     Cadillac: ["Escalade", "XT4", "XT5", "XT6", "CT4", "CT5"],
     Lincoln: ["Navigator", "Aviator", "Corsair", "Nautilus"],
-    Other: ["Other Model"]
+    Other: ["Other Model"],
   };
 
   const carMakes = Object.keys(carData);
 
   const currentYear = new Date().getFullYear();
-  const carYears = Array.from({ length: currentYear - 2010 + 1 }, (_, i) => currentYear - i);
-  const [error, setError] = useState('')
+  const carYears = Array.from(
+    { length: currentYear - 2010 + 1 },
+    (_, i) => currentYear - i,
+  );
+  const [error, setError] = useState("");
 
   const steps = [
     {
@@ -87,21 +156,26 @@ const JoinWaitlist = () => {
   };
 
   const nextStep = () => {
-    if(currentStep === 1) {
-      if(!formData.fullName || !formData.email || !formData.phone || !formData.currentlyRents) {
-         setError('All fields are required!')
-         setTimeout(() => {
-          setError('')
-         }, 2000)
-          return
-      } 
-    } else if(currentStep === 2) {
-      if(!formData.carMake || !formData.carModel || !formData.carYear) {
-        setError('All fields are required!')
+    if (currentStep === 1) {
+      if (
+        !formData.fullName ||
+        !formData.email ||
+        !formData.phone ||
+        !formData.currentlyRents
+      ) {
+        setError("All fields are required!");
         setTimeout(() => {
-          setError('')
-         }, 2000)
-         return
+          setError("");
+        }, 2000);
+        return;
+      }
+    } else if (currentStep === 2) {
+      if (!formData.carMake || !formData.carModel || !formData.carYear) {
+        setError("All fields are required!");
+        setTimeout(() => {
+          setError("");
+        }, 2000);
+        return;
       }
     }
     if (currentStep < 3) {
@@ -116,8 +190,8 @@ const JoinWaitlist = () => {
   };
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth'})
-  }, [])
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const getStepStatus = (stepId) => {
     if (stepId < currentStep) return "completed";
@@ -243,7 +317,9 @@ const JoinWaitlist = () => {
             whileTap={{ scale: 0.98 }}
           >
             <div className="text-center">
-              <div className={`w-4 h-4 mx-auto mb-1 border-2 rounded-full ${formData.currentlyRents === "no" ? "border-gold" : "border-muted-foreground"}`}></div>
+              <div
+                className={`w-4 h-4 mx-auto mb-1 border-2 rounded-full ${formData.currentlyRents === "no" ? "border-gold" : "border-muted-foreground"}`}
+              ></div>
               <span className="font-medium text-sm">No</span>
             </div>
           </motion.button>
@@ -283,7 +359,14 @@ const JoinWaitlist = () => {
             <CustomDropdown
               options={carMakes}
               value={formData.carMake}
-              onChange={(value) => setFormData({ ...formData, carMake: value, carModel: "", carYear: "" })}
+              onChange={(value) =>
+                setFormData({
+                  ...formData,
+                  carMake: value,
+                  carModel: "",
+                  carYear: "",
+                })
+              }
               placeholder="Select car make"
               className="pl-10"
             />
@@ -301,7 +384,9 @@ const JoinWaitlist = () => {
             <CustomDropdown
               options={formData.carMake ? carData[formData.carMake] : []}
               value={formData.carModel}
-              onChange={(value) => setFormData({ ...formData, carModel: value, carYear: "" })}
+              onChange={(value) =>
+                setFormData({ ...formData, carModel: value, carYear: "" })
+              }
               placeholder="Select car model"
               disabled={!formData.carMake}
               className="pl-10"
@@ -375,19 +460,25 @@ const JoinWaitlist = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-3">
             <div className="flex justify-between items-center py-2 border-b border-gold-20">
-              <span className="font-medium text-muted-foreground text-sm">Full Name</span>
+              <span className="font-medium text-muted-foreground text-sm">
+                Full Name
+              </span>
               <span className="text-white text-sm">
                 {formData.fullName || "Not provided"}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-gold-20">
-              <span className="font-medium text-muted-foreground text-sm">Email</span>
+              <span className="font-medium text-muted-foreground text-sm">
+                Email
+              </span>
               <span className="text-white text-sm">
                 {formData.email || "Not provided"}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-gold-20">
-              <span className="font-medium text-muted-foreground text-sm">Phone</span>
+              <span className="font-medium text-muted-foreground text-sm">
+                Phone
+              </span>
               <span className="text-white text-sm">
                 {formData.phone || "Not provided"}
               </span>
@@ -400,26 +491,32 @@ const JoinWaitlist = () => {
                 {formData.currentlyRents === "yes"
                   ? "Yes"
                   : formData.currentlyRents === "no"
-                  ? "No"
-                  : "Not specified"}
+                    ? "No"
+                    : "Not specified"}
               </span>
             </div>
           </div>
           <div className="space-y-3">
             <div className="flex justify-between items-center py-2 border-b border-gold-20">
-              <span className="font-medium text-muted-foreground text-sm">Car Make</span>
+              <span className="font-medium text-muted-foreground text-sm">
+                Car Make
+              </span>
               <span className="text-white text-sm">
                 {formData.carMake || "Not selected"}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-gold-20">
-              <span className="font-medium text-muted-foreground text-sm">Car Model</span>
+              <span className="font-medium text-muted-foreground text-sm">
+                Car Model
+              </span>
               <span className="text-white text-sm">
                 {formData.carModel || "Not provided"}
               </span>
             </div>
             <div className="flex justify-between items-center py-2">
-              <span className="font-medium text-muted-foreground text-sm">Car Year</span>
+              <span className="font-medium text-muted-foreground text-sm">
+                Car Year
+              </span>
               <span className="text-white text-sm">
                 {formData.carYear || "Not selected"}
               </span>
@@ -438,9 +535,15 @@ const JoinWaitlist = () => {
               What happens next?
             </h3>
             <div className="text-muted-foreground space-y-1">
-              <p className="text-sm">• You'll receive a confirmation email within 5 minutes</p>
-              <p className="text-sm">• We'll review your application within 24-48 hours</p>
-              <p className="text-sm">• Early members get exclusive benefits and reduced fees</p>
+              <p className="text-sm">
+                • You'll receive a confirmation email within 5 minutes
+              </p>
+              <p className="text-sm">
+                • We'll review your application within 24-48 hours
+              </p>
+              <p className="text-sm">
+                • Early members get exclusive benefits and reduced fees
+              </p>
               <p className="text-sm">
                 • Be among the first to experience the future of car sharing
               </p>
@@ -502,7 +605,10 @@ const JoinWaitlist = () => {
           </div>
 
           {/* Optimized Progress Steps */}
-          <div className="mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div
+            className="mb-8 opacity-0 animate-fade-in-up"
+            style={{ animationDelay: "0.2s" }}
+          >
             <div className="flex items-center justify-center space-x-2 sm:space-x-6 md:space-x-8">
               {steps.map((step, index) => (
                 <div key={step.id} className="flex items-center">
@@ -512,8 +618,8 @@ const JoinWaitlist = () => {
                         getStepStatus(step.id) === "completed"
                           ? "bg-gold text-black border-gold shadow-gold"
                           : getStepStatus(step.id) === "current"
-                          ? "bg-gold text-black border-gold shadow-gold"
-                          : "bg-secondary border-border text-muted-foreground"
+                            ? "bg-gold text-black border-gold shadow-gold"
+                            : "bg-secondary border-border text-muted-foreground"
                       }`}
                     >
                       {getStepStatus(step.id) === "completed" ? (
@@ -528,8 +634,8 @@ const JoinWaitlist = () => {
                           getStepStatus(step.id) === "current"
                             ? "text-gold"
                             : getStepStatus(step.id) === "completed"
-                            ? "text-gold"
-                            : "text-muted-foreground"
+                              ? "text-gold"
+                              : "text-muted-foreground"
                         }`}
                       >
                         {step.title}
@@ -548,10 +654,15 @@ const JoinWaitlist = () => {
           </div>
 
           {/* Optimized Form Container */}
-        
-          <div className="bg-gradient-card backdrop-blur-xl rounded-2xl shadow-elevated border border-gold-20 p-6 md:p-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+
+          <div
+            className="bg-gradient-card backdrop-blur-xl rounded-2xl shadow-elevated border border-gold-20 p-6 md:p-8 opacity-0 animate-fade-in-up"
+            style={{ animationDelay: "0.4s" }}
+          >
             <AnimatePresence mode="wait">{renderStepContent()}</AnimatePresence>
-            {error && <p className="text-red-600 text-sm mt-3 font-semibold">{error}</p>}
+            {error && (
+              <p className="text-red-600 text-sm mt-3 font-semibold">{error}</p>
+            )}
 
             {/* Navigation */}
             <div className="flex justify-between items-center mt-8 pt-6 border-t border-gold-20">
@@ -571,9 +682,8 @@ const JoinWaitlist = () => {
                 Step {currentStep} of {steps.length}
               </div>
               <div className="text-xs sm:hidden text-muted-foreground font-medium bg-secondary px-3 py-1.5 rounded-full border border-border">
-                 {currentStep} of {steps.length}
+                {currentStep} of {steps.length}
               </div>
-
 
               {currentStep < 3 ? (
                 <button
@@ -584,15 +694,12 @@ const JoinWaitlist = () => {
                   <ChevronRight size={16} />
                 </button>
               ) : (
-                <button
-                  className="flex items-center space-x-2 bg-gradient-gold text-black px-4 sm:px-6 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-gold/25 transition-all duration-200"
-                >
+                <button className="flex items-center space-x-2 bg-gradient-gold text-black px-4 sm:px-6 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-gold/25 transition-all duration-200">
                   <span>Join the Waitlist</span>
                   <Check size={16} />
                 </button>
               )}
             </div>
-          
           </div>
         </div>
       </div>
